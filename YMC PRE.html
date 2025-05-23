@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YMC+ | Premium Üyelik Platformu</title>
+  <meta name="description" content="YMC+ ile özel avantajlardan yararlanın. Exxen, YouTube Premium, Canva Pro ve daha fazlası sizi bekliyor!">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="https://i.hizliresim.com/kpqn4fh.png" type="image/png">
+  
+  <!-- Fontlar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKEG6CP3KC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WKEG6CP3KC');
+  </script>
+  
+  <style>
+    :root {
+      --primary: #6c5ce7;
+      --primary-dark: #5649c0;
+      --secondary: #fd79a8;
+      --accent: #00cec9;
+      --dark: #2d3436;
+      --light: #f5f6fa;
+      --gradient: linear-gradient(135deg, #6c5ce7 0%, #fd79a8 100%);
+      --card-shadow: 0 20px 40px rgba(108, 92, 231, 0.15);
+      --hover-shadow: 0 25px 50px rgba(108, 92, 231, 0.3);
+      --body-bg: #f9f9f9;
+      --card-bg: #ffffff;
+      --text-color: #2d3436;
+    }
+
+    .dark-mode {
+      --primary: #a29bfe;
+      --primary-dark: #4a3f76;
+      --secondary: #a8327a;
+      --body-bg: #1a1a1a;
+      --card-bg: #2d2d2d;
+      --text-color: #f5f6fa;
+      --gradient: linear-gradient(135deg, #4a3f76 0%, #a8327a 100%);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--body-bg);
+      color: var(--text-color);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-toggle i {
+      font-size: 1.2rem;
+    }
+
+    /* YMC Shop Button */
+    .shop-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--secondary);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 5px 20px rgba(253, 121, 168, 0.4);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .shop-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(253, 121, 168, 0.6);
+    }
+
+    .shop-button i {
+      font-size: 1.2rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: var(--gradient);
+      color: white;
+      padding: 0 20px;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://assets.codepen.io/3364143/glass.png') center/cover no-repeat;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(to right, white, #f5f6fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 100px 20px;
+      background: var(--body-bg);
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 80px;
+      color: var(--primary);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 5px;
+      background: var(--gradient);
+      margin: 20px auto;
+      border-radius: 5px;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transform: translateY(0);
+      border: 1px solid rgba(108, 92, 231, 0.1);
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--hover-shadow);
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      color: white;
+      font-size: 2rem;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .feature-card p {
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+    
+    /* Pricing Section */
+    .pricing {
+      padding: 100px 20px;
+      background: var(--body-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pricing::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://assets.codepen.io/3364143/dots.png') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: 1;
+    }
+    
+    .pricing-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .pricing-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .pricing-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 50px 40px;
+      width: 350px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(108, 92, 231, 0.1);
+    }
+    
+    .pricing-card.popular {
+      border: 3px solid var(--primary);
+      transform: scale(1.05);
+    }
+    
+    .pricing-card.popular::after {
+      content: 'POPÜLER';
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      background: var(--gradient);
+      color: white;
+      padding: 5px 30px;
+      font-weight: 700;
+      transform: rotate(45deg);
+      font-size: 0.8rem;
+    }
+    
+    .pricing-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    
+    .price {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      color: var(--text-color);
+    }
+    
+    .price span {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--primary);
+    }
+    
+    .pricing-features {
+      margin-bottom: 40px;
+      min-height: 480px;
+    }
+    
+    .pricing-features li {
+      list-style: none;
+      margin-bottom: 12px;
+      padding-left: 30px;
+      position: relative;
+      color: var(--text-color);
+      font-size: 0.95rem;
+    }
+    
+    .pricing-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .pricing-features li.not-included {
+      color: #999;
+      text-decoration: line-through;
+    }
+    
+    .pricing-features li.not-included::before {
+      content: '✗';
+      color: #ff4757;
+    }
+    
+    .dark-mode .pricing-features li.not-included {
+      color: #777;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
+    }
+
+    /* New Features Section */
+    .new-features {
+      padding: 100px 20px;
+      background: var(--card-bg);
+    }
+
+    .features-carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 30px;
+      padding: 20px 0;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      max-width: 1000px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    .feature-slide {
+      min-width: 300px;
+      scroll-snap-align: start;
+      background: var(--body-bg);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 0 0 auto;
+      width: 300px;
+    }
+
+    .feature-slide i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    /* CTA */
+    .cta {
+      padding: 100px 20px;
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://assets.codepen.io/3364143/glass.png') center/cover no-repeat;
+      opacity: 0.1;
+      z-index: 1;
+    }
+    
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+    }
+    
+    .btn-cta {
+      background: white;
+      color: var(--primary);
+      padding: 18px 45px;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-cta:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 3rem; }
+      .hero p { font-size: 1.2rem; }
+      .section-title { font-size: 2rem; }
+      .pricing-card.popular { transform: scale(1); }
+      .pricing-card { width: 100%; }
+      .pricing-features { min-height: auto; }
+      .features-carousel {
+        justify-content: flex-start;
+      }
+      .shop-button {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 { font-size: 2.5rem; }
+      .logo { width: 150px; height: 150px; }
+      .shop-button {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        font-size: 0.8rem;
+      }
+      .shop-button i {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- YMC Shop Button -->
+  <a href="https://ymcshop.com.tr" class="shop-button" target="_blank">
+    <i class="fas fa-shopping-bag"></i>
+    <span>YMC SHOP</span>
+  </a>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="https://i.hizliresim.com/51a2yx5.png" alt="YMC+ Logo" class="logo">
+      <h1>YMC+ Premium</h1>
+      <p>Dijital dünyanın kapılarını aralayın! Exxen, YouTube Premium, Canva Pro ve daha fazlası tek bir üyelikte.</p>
+      <a href="#pricing" class="btn btn-primary" style="max-width: 250px; margin: 0 auto;">Hemen Katıl</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 class="section-title">YMC+ Avantajları</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-film"></i>
+        </div>
+        <h3>Exxen Premium</h3>
+        <p>1 aylık tam erişim ile favori dizilerin ve filmlerin keyfini çıkarın.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fab fa-youtube"></i>
+        </div>
+        <h3>YouTube Premium</h3>
+        <p>Reklamsız izleme, arka planda çalma ve YouTube Music erişimi.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h3>Canva Pro</h3>
+        <p>Profesyonel tasarım araçlarına sınırsız erişim.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Kaspersky Premium</h3>
+        <p>1 aylık tam koruma ve VPN erişimi ile güvende kalın.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-tags"></i>
+        </div>
+        <h3>Ürün Tedariği</h3>
+        <p>Özel indirimlerle premium ürünlere erişim imkanı.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-percentage"></i>
+        </div>
+        <h3>Özel İndirimler</h3>
+        <p>Ulaşım, yeme-içme ve eğlence alanlarında özel avantajlar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Features Section -->
+  <section class="new-features">
+    <h2 class="section-title">Yeni Özellikler</h2>
+    <div class="features-carousel">
+      <div class="feature-slide">
+        <i class="fas fa-rocket"></i>
+        <h3>Hızlı Aktivasyon</h3>
+        <p>Üyeliğiniz 5 dakika içinde aktif hale gelir, anında kullanmaya başlayın.</p>
+      </div>
+      <div class="feature-slide">
+        <i class="fas fa-headset"></i>
+        <h3>7/24 Destek</h3>
+        <p>WhatsApp üzerinden sürekli destek ekibimizle iletişim kurabilirsiniz.</p>
+      </div>
+      <div class="feature-slide">
+        <i class="fas fa-tag"></i>
+        <h3>Özel İndirimler</h3>
+        <p>Partner firmalardan özel fırsatlar ve indirimler.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing" id="pricing">
+    <h2 class="section-title">Üyelik Planları</h2>
+    <div class="pricing-content">
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Standart</h3>
+          <div class="price">₺279<span>/ay</span></div>
+          <ul class="pricing-features">
+            <li>Exxen Premium (1 ay)</li>
+            <li>YouTube Premium (1 ay)</li>
+            <li>Canva Pro (1 ay)</li>
+            <li>Kaspersky Premium + VPN</li>
+            <li class="not-included">Hediye Max Premium</li>
+            <li class="not-included">Uber'de 400TL indirim</li>
+            <li class="not-included">Petrol Ofisi avantajları</li>
+            <li class="not-included">Yemek siparişlerinde indirim</li>
+            <li class="not-included">Özel ürün tedariği</li>
+            <li class="not-included">Aposto yıllık üyeliklerde %50 indirim</li>
+            <li class="not-included">Otobüs biletlerinde 60 TL hediye</li>
+            <li class="not-included">Yurt içi uçak biletinde 175 TL indirim</li>
+            <li class="not-included">Yurt dışı uçak biletinde 300 TL indirim</li>
+          </ul>
+          <a href="https://wa.me/905510096844" class="btn btn-primary">Satın Al</a>
+        </div>
+        
+        <div class="pricing-card popular">
+          <h3>Premium</h3>
+          <div class="price">₺399<span>/ay</span></div>
+          <ul class="pricing-features">
+            <li>Exxen Premium (1 ay)</li>
+            <li>YouTube Premium (1 ay)</li>
+            <li>Canva Pro (1 ay)</li>
+            <li>Kaspersky Premium + VPN</li>
+            <li>Hediye Max Premium</li>
+            <li>Uber'de 400TL indirim</li>
+            <li>Petrol Ofisi avantajları</li>
+            <li>Yemek siparişlerinde indirim</li>
+            <li>Özel ürün tedariği</li>
+            <li>Aposto yıllık üyeliklerde %50 indirim</li>
+            <li>Otobüs biletlerinde 60 TL hediye</li>
+            <li>Yurt içi uçak biletinde 175 TL indirim</li>
+            <li>Yurt dışı uçak biletinde 300 TL indirim</li>
+          </ul>
+          <a href="https://wa.me/905510096844" class="btn btn-primary">Satın Al</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>Hemen YMC+ Premium'a Katılın</h2>
+      <p>Dijital yaşamınızı kolaylaştıracak tüm avantajlar tek bir üyelikte. Şimdi katılın, farkı yaşayın!</p>
+      <a href="https://wa.me/905510096844" class="btn-cta">WhatsApp'tan Satın Al</a>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or use preferred color scheme
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      body.classList.add('dark-mode');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      
+      if (body.classList.contains('dark-mode')) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Animation on scroll
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.feature-card, .pricing-card, .feature-slide');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    // Set initial state
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.feature-card, .pricing-card, .feature-slide').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+      });
+      
+      animateOnScroll();
+    });
+    
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Google Analytics Events
+    document.querySelectorAll('.btn-primary, .btn-cta').forEach(button => {
+      button.addEventListener('click', function() {
+        gtag('event', 'purchase_click', {
+          'event_category': 'conversion',
+          'event_label': this.textContent.trim()
+        });
+      });
+    });
+  </script>
+</body>
+</html>
