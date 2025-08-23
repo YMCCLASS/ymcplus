@@ -58,6 +58,7 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            padding-top: 80px; /* Header yüksekliği kadar boşluk eklendi */
         }
         
         .container {
@@ -76,6 +77,7 @@
             background: rgba(30, 30, 30, 0.95);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
+            height: 80px; /* Sabit yükseklik eklendi */
         }
         
         .light-mode header {
@@ -88,6 +90,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
+            height: 100%;
         }
         
         .logo {
@@ -98,6 +101,7 @@
             color: var(--text-color);
             font-weight: 700;
             font-size: 1.5rem;
+            white-space: nowrap; /* Yazının kaymasını engelle */
         }
         
         .logo-img {
@@ -116,6 +120,7 @@
             color: var(--text-color);
             font-weight: 500;
             position: relative;
+            white-space: nowrap; /* Yazının kaymasını engelle */
         }
         
         .nav-links a::after {
@@ -159,10 +164,34 @@
             transform: scale(1.1);
         }
         
+        /* Floating YMCSHOP Button */
+        .floating-shop-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--secondary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-shop-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 100vh;
+            min-height: calc(100vh - 80px); /* Header yüksekliğini çıkar */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -170,7 +199,7 @@
             color: white;
             overflow: hidden;
             background: var(--gradient);
-            padding: 100px 0 60px;
+            padding: 60px 0;
         }
         
         .hero-content {
@@ -547,12 +576,70 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px; /* Mobil için daha küçük boşluk */
+            }
+            
+            header {
+                height: 70px; /* Mobil için daha küçük header */
+            }
+            
+            .header-container {
+                padding: 10px 0;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo-img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+            
+            /* Floating button for mobile */
+            .floating-shop-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                min-height: calc(100vh - 70px); /* Mobil için header yüksekliğini çıkar */
+                padding: 40px 0;
+            }
+            
+            .hero-logo {
+                width: 120px;
+                height: 120px;
+            }
+            
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
             }
             
             .features-grid {
@@ -560,11 +647,68 @@
             }
             
             .pricing-card {
-                padding: 30px 20px;
+                padding: 25px 15px;
             }
             
             .price {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
+            }
+            
+            .pricing-features li {
+                font-size: 0.85rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .cta p {
+                font-size: 1rem;
+            }
+            
+            .btn-cta {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .pricing-card.popular::after {
+                font-size: 0.7rem;
+                padding: 3px 30px;
+                right: -30px;
+            }
+            
+            .floating-shop-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .floating-shop-btn i {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -594,6 +738,12 @@
             </div>
         </div>
     </header>
+
+    <!-- Floating YMCSHOP Button -->
+    <a href="https://ymcshop.com.tr" target="_blank" class="floating-shop-btn">
+        <i class="fas fa-store"></i>
+        YMCSHOP
+    </a>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
